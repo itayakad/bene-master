@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "outDir": "./lib",
+    "lib": ["es2017", "dom"], // Include DOM types if needed for Firebase functions
+    "types": ["node"] // Add Node.js types explicitly
+  },
+  "include": [
+    "src/**/*.ts" // Specify source files
+  ],
+  "exclude": [
+    "node_modules",
+    "lib" // Avoid including compiled files
+  ]
+}
