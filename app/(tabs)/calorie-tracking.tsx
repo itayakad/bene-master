@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -16,83 +16,84 @@ import { ProgressBar } from 'react-native-paper';
 import { db, auth } from '../../FirebaseConfig';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { useRouter } from 'expo-router';
+import Colors from '../../constants/Colors';
+import CommonStyles from '../../constants/CommonStyles';
 
 export default function CaloriesTracking() {
   const router = useRouter();
-  const [calorieGoal, setCalorieGoal] = useState(2000); // Default goal
+
+  /** State Initialization */
+  const [calorieGoal, setCalorieGoal] = useState(() => 2000);
   const [caloriesConsumed, setCaloriesConsumed] = useState(0);
   const [customCalories, setCustomCalories] = useState('');
-  const [proteinGoal, setProteinGoal] = useState(100); // Default goal for protein
+  const [proteinGoal, setProteinGoal] = useState(() => 100);
   const [proteinConsumed, setProteinConsumed] = useState(0);
-  const [showProtein, setShowProtein] = useState(false); // State to determine if the protein bar is shown
+  const [showProtein, setShowProtein] = useState(false);
 
-  // Fetch preferences and progress from Firestore
-  const fetchSettingsFromFirestore = async () => {
+  /** Fetch User Data from Firestore */
+  const fetchSettingsFromFirestore = useCallback(async () => {
     const user = auth.currentUser;
     if (!user) return;
 
-    const docRef = doc(db, 'users', user.uid);
     try {
-      const docSnap = await getDoc(docRef);
+      const docSnap = await getDoc(doc(db, 'users', user.uid));
       if (docSnap.exists()) {
         const data = docSnap.data();
         setCaloriesConsumed(data.caloriesConsumed || 0);
         setProteinConsumed(data.proteinConsumed || 0);
         setCalorieGoal(parseInt(data.calculatedGoals?.calorieGoal || 2000));
         setProteinGoal(parseInt(data.calculatedGoals?.proteinGoal || 100));
-        setShowProtein(data.showProtein || false); // Fetch the toggle state
+        setShowProtein(data.showProtein || false);
       } else {
         console.log('No data found!');
       }
     } catch (error) {
       console.error('Error fetching data from Firestore:', error);
     }
-  };
+  }, []);
 
-  const saveCaloriesToFirestore = async (calories: number) => {
+  /** Save Data to Firestore */
+  const saveToFirestore = async (data) => {
     const user = auth.currentUser;
     if (!user) return;
 
-    const docRef = doc(db, 'users', user.uid);
     try {
-      await setDoc(docRef, { caloriesConsumed: calories }, { merge: true });
+      await setDoc(doc(db, 'users', user.uid), data, { merge: true });
     } catch (error) {
-      console.error('Error saving calories:', error);
+      console.error('Error saving data:', error);
     }
   };
 
-  const saveProteinToFirestore = async (protein: number) => {
-    const user = auth.currentUser;
-    if (!user) return;
-
-    const docRef = doc(db, 'users', user.uid);
-    try {
-      await setDoc(docRef, { proteinConsumed: protein }, { merge: true });
-    } catch (error) {
-      console.error('Error saving protein:', error);
-    }
-  };
-
-  const addCalories = (amount: number) => {
+  /** Update Calories */
+  const addCalories = (amount) => {
     const updatedCalories = caloriesConsumed + amount;
     setCaloriesConsumed(updatedCalories);
-    saveCaloriesToFirestore(updatedCalories);
+    saveToFirestore({ caloriesConsumed: updatedCalories });
   };
 
+  /** Handle Manual Input for Calories */
   const handleManualAdd = () => {
-    const amount = parseFloat(customCalories);
-    if (isNaN(amount) || amount <= 0) {
-      alert('Please enter a valid calorie amount.');
+    if (!customCalories.trim()) {
+      Alert.alert('Invalid Input', 'Please enter a valid calorie amount.');
       return;
     }
+    
+    const amount = parseFloat(customCalories);
+    if (isNaN(amount) || amount <= 0) {
+      Alert.alert('Invalid Input', 'Please enter a valid calorie amount.');
+      return;
+    }
+
     addCalories(amount);
     setCustomCalories('');
   };
 
+  /** Fetch Data on Component Mount */
   useEffect(() => {
     fetchSettingsFromFirestore();
-  }, []);
+  }, [fetchSettingsFromFirestore]);
 
+  /** Progress Calculation */
   const progress = caloriesConsumed / calorieGoal;
   const proteinProgress = proteinConsumed / proteinGoal;
 
@@ -103,16 +104,16 @@ export default function CaloriesTracking() {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-          <Text style={styles.header}>Calories Tracking</Text>
-          <Text style={styles.subheader}>Goal: {calorieGoal} kcal</Text>
-          <Text style={styles.intake}>You've consumed: {caloriesConsumed} kcal</Text>
+          <Text style={CommonStyles.header}>Calories Tracking</Text>
+          <Text style={CommonStyles.subheader}>Goal: {calorieGoal} kcal</Text>
+          <Text style={CommonStyles.intake}>You've consumed: {caloriesConsumed} kcal</Text>
 
           <ProgressBar progress={progress} color="#FFA500" style={styles.progressBar} />
 
           {/* Conditionally render protein progress bar */}
           {showProtein && (
             <View style={styles.row}>
-              <Text style={styles.label}>Protein</Text>
+              <Text style={styles.proteinLabel}>Protein</Text>
               <View style={styles.progressContainer}>
                 <ProgressBar progress={proteinProgress} color="#FFAB91" style={styles.proteinProgressBar} />
                 {proteinConsumed > 0 && (
@@ -130,15 +131,15 @@ export default function CaloriesTracking() {
             </View>
           )}
 
-          <View style={styles.buttonContainer}>
+          <View style={CommonStyles.buttonContainer}>
             <Button title="+100 kcal" onPress={() => addCalories(100)} color="#FFA500" />
             <Button title="+200 kcal" onPress={() => addCalories(200)} color="#FFA500" />
             <Button title="+500 kcal" onPress={() => addCalories(500)} color="#FFA500" />
           </View>
 
-          <View style={styles.inputContainer}>
+          <View style={CommonStyles.inputContainer}>
             <TextInput
-              style={styles.input}
+              style={CommonStyles.input}
               placeholder="Enter kcal"
               placeholderTextColor="#6C757D"
               keyboardType="numeric"
@@ -146,7 +147,7 @@ export default function CaloriesTracking() {
               onChangeText={setCustomCalories}
             />
             <TouchableOpacity style={styles.addButton} onPress={handleManualAdd}>
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={CommonStyles.addButtonText}>Add</Text>
             </TouchableOpacity>
           </View>
 
@@ -154,15 +155,15 @@ export default function CaloriesTracking() {
             style={styles.lookupButton}
             onPress={() => router.push('/log-meal')}
           >
-            <Text style={styles.buttonText}>Log Food</Text>
+            <Text style={CommonStyles.buttonText}>Log Food</Text>
           </TouchableOpacity>
 
-          <View style={styles.separateButtonContainer}>
+          <View style={CommonStyles.goBackButtonContainer}>
             <TouchableOpacity
-              style={styles.goBackButton}
+              style={CommonStyles.goBackButton}
               onPress={() => router.push('/')}
             >
-              <Text style={styles.goBackButtonText}>Go Back to Dashboard</Text>
+              <Text style={CommonStyles.buttonText}>Go Back to Dashboard</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -176,108 +177,39 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: 'center',
-    backgroundColor: '#FFF3E0',
-  },
-  header: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  subheader: {
-    fontSize: 18,
-    textAlign: 'center',
-    marginBottom: 5,
-  },
-  intake: {
-    fontSize: 16,
-    textAlign: 'center',
-    marginBottom: 20,
+    backgroundColor: Colors.lightorange,
   },
   progressBar: {
     height: 20,
     borderRadius: 10,
-    backgroundColor: '#FFE4B5',
+    backgroundColor: Colors.medorange,
     marginVertical: 20,
   },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 20,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  input: {
-    flex: 1,
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginRight: 10,
-    backgroundColor: '#fff',
-  },
   addButton: {
-    backgroundColor: '#FFA500',
+    backgroundColor: Colors.orange,
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 5,
   },
-  addButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
   lookupButton: {
-    backgroundColor: '#FFA500',
+    backgroundColor: Colors.orange,
     padding: 15,
     borderRadius: 10,
     marginTop: 20,
     alignItems: 'center',
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  goBackButton: {
-    position: 'absolute',
-    bottom: 50, // Updated padding from the bottom of the screen
-    left: 20,
-    right: 20,
-    backgroundColor: '#5C6BC0',
-    padding: 15,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 5, // For shadow effect
-  },
-  goBackButtonText: {
-    color: '#FFFFFF', // Keeps the text white for contrast
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  separateButtonContainer: {
-    backgroundColor: '#FFFFFF',
-    position: 'absolute',
-    bottom: 0, // Align to the bottom of the screen
-    left: 0,
-    right: 0,
-    padding: 60, // Padding inside the white container
-  },      
+  }, 
+  // PROTEIN BAR
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 10,
     marginTop: -5,
   },
-  label: {
+  proteinLabel: {
     fontSize: 8,
     fontWeight: 'bold',
-    color: '#000',
-    marginRight: 10, // Space between label and progress bar
+    color: Colors.black,
+    marginRight: 10,
   },
   progressContainer: {
     flex: 1,
@@ -286,19 +218,19 @@ const styles = StyleSheet.create({
   proteinProgressBar: {
     height: 10,
     borderRadius: 10,
-    backgroundColor: '#FFE4B5',
+    backgroundColor: Colors.medorange,
   },
   progressText: {
     position: 'absolute',
     fontSize: 8,
-    color: '#000',
+    color: Colors.black,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   goal: {
     fontSize: 8,
     fontWeight: 'bold',
-    color: '#000',
-    marginLeft: 10, // Space between bar and goal
+    color: Colors.black,
+    marginLeft: 10,
   },
 });
