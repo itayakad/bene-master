@@ -9,6 +9,8 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { useRouter } from 'expo-router';
 import { trackListener } from '../../utils/ListenerManager'; // Import ListenerManager
+import Colors from '../../constants/Colors';
+import CommonStyles from '../../constants/CommonStyles';
 
 export default function DashboardScreen() {
   const router = useRouter();
@@ -100,34 +102,34 @@ export default function DashboardScreen() {
       {/* Progress Bars */}
       <View style={styles.progressContainer}>
         <TouchableOpacity onPress={() => router.push('/water-tracking')}>
-          <CircularProgress size={110} width={8} fill={waterFill} tintColor="#1E90FF" backgroundColor="#e0e0e0">
-            {() => <FontAwesome name="tint" size={52} color="#1E90FF" />}
+          <CircularProgress size={110} width={8} fill={waterFill} tintColor={Colors.lightblue} backgroundColor={Colors.lightgrey}>
+            {() => <FontAwesome name="tint" size={52} color={Colors.lightblue} />}
           </CircularProgress>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => router.push('/calorie-tracking')}>
-          <CircularProgress size={110} width={8} fill={calorieFill} tintColor="#FFA500" backgroundColor="#e0e0e0">
-            {() => <MaterialCommunityIcons name="food-apple" size={57} color="#FFA500" />}
+          <CircularProgress size={110} width={8} fill={calorieFill} tintColor={Colors.orange} backgroundColor={Colors.lightgrey}>
+            {() => <MaterialCommunityIcons name="food-apple" size={57} color={Colors.orange} />}
           </CircularProgress>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => router.push('/exercise-tracking')}>
-          <CircularProgress size={110} width={8} fill={exerciseFill} tintColor="#32CD32" backgroundColor="#e0e0e0">
-            {() => <FontAwesome6 name="dumbbell" size={45} color="#32CD32" />}
+          <CircularProgress size={110} width={8} fill={exerciseFill} tintColor={Colors.green} backgroundColor={Colors.lightgrey}>
+            {() => <FontAwesome6 name="dumbbell" size={45} color={Colors.green} />}
           </CircularProgress>
         </TouchableOpacity>
       </View>
 
       {/* Existing Buttons */}
       <TouchableOpacity style={styles.button} onPress={() => router.push('/survey')}>
-        <Text style={styles.text}>Edit Health Info</Text>
+        <Text style={CommonStyles.buttonText}>Edit Health Info</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.greenButton} onPress={() => router.push('/exercise-data')}>
-        <Text style={styles.text}>View Exercise Log</Text>
+        <Text style={CommonStyles.buttonText}>View Exercise Log</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.mealButton} onPress={() => router.push('/meal-data')}>
-        <Text style={styles.text}>View Meal Log</Text>
+        <Text style={CommonStyles.buttonText}>View Meal Log</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.settingsButton} onPress={() => router.push('../settings')}>
-        <Text style={styles.text}>Account Settings</Text>
+        <Text style={CommonStyles.buttonText}>Account Settings</Text>
       </TouchableOpacity>
     </View>
   );
@@ -137,12 +139,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#FAFAFA',
+    backgroundColor: Colors.white,
   },
   title: {
     fontSize: 45,
     fontWeight: '800',
-    color: '#1A237E',
+    color: Colors.darkpurple,
     marginBottom: 50,
     marginTop: 50,
   },
@@ -154,7 +156,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '90%',
-    backgroundColor: '#5C6BC0',
+    backgroundColor: Colors.purple,
     padding: 15,
     borderRadius: 15,
     alignItems: 'center',
@@ -162,7 +164,7 @@ const styles = StyleSheet.create({
   },
   greenButton: {
     width: '90%',
-    backgroundColor: '#32CD32',
+    backgroundColor: Colors.green,
     padding: 15,
     borderRadius: 15,
     alignItems: 'center',
@@ -170,7 +172,7 @@ const styles = StyleSheet.create({
   },
   mealButton: {
     width: '90%',
-    backgroundColor: '#FFA500',
+    backgroundColor: Colors.orange,
     padding: 15,
     borderRadius: 15,
     alignItems: 'center',
@@ -178,16 +180,11 @@ const styles = StyleSheet.create({
   },
   settingsButton: {
     width: '90%',
-    backgroundColor: '#5C6BC0',
+    backgroundColor: Colors.purple,
     padding: 15,
     borderRadius: 15,
     alignItems: 'center',
     position: 'absolute',
     bottom: 50,
-  },
-  text: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 'bold',
   },
 });

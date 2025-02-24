@@ -53,7 +53,7 @@ export default function CaloriesTracking() {
   }, []);
 
   /** Save Data to Firestore */
-  const saveToFirestore = async (data) => {
+  const saveToFirestore = async (data: any) => {
     const user = auth.currentUser;
     if (!user) return;
 
@@ -65,7 +65,7 @@ export default function CaloriesTracking() {
   };
 
   /** Update Calories */
-  const addCalories = (amount) => {
+  const addCalories = (amount: any) => {
     const updatedCalories = caloriesConsumed + amount;
     setCaloriesConsumed(updatedCalories);
     saveToFirestore({ caloriesConsumed: updatedCalories });
@@ -108,14 +108,14 @@ export default function CaloriesTracking() {
           <Text style={CommonStyles.subheader}>Goal: {calorieGoal} kcal</Text>
           <Text style={CommonStyles.intake}>You've consumed: {caloriesConsumed} kcal</Text>
 
-          <ProgressBar progress={progress} color="#FFA500" style={styles.progressBar} />
+          <ProgressBar progress={progress} color={Colors.orange} style={styles.progressBar} />
 
           {/* Conditionally render protein progress bar */}
           {showProtein && (
             <View style={styles.row}>
               <Text style={styles.proteinLabel}>Protein</Text>
               <View style={styles.progressContainer}>
-                <ProgressBar progress={proteinProgress} color="#FFAB91" style={styles.proteinProgressBar} />
+                <ProgressBar progress={proteinProgress} color={Colors.pink} style={styles.proteinProgressBar} />
                 {proteinConsumed > 0 && (
                   <Text
                     style={[
@@ -132,16 +132,16 @@ export default function CaloriesTracking() {
           )}
 
           <View style={CommonStyles.buttonContainer}>
-            <Button title="+100 kcal" onPress={() => addCalories(100)} color="#FFA500" />
-            <Button title="+200 kcal" onPress={() => addCalories(200)} color="#FFA500" />
-            <Button title="+500 kcal" onPress={() => addCalories(500)} color="#FFA500" />
+            <Button title="+100 kcal" onPress={() => addCalories(100)} color={Colors.orange} />
+            <Button title="+200 kcal" onPress={() => addCalories(200)} color={Colors.orange} />
+            <Button title="+500 kcal" onPress={() => addCalories(500)} color={Colors.orange} />
           </View>
 
           <View style={CommonStyles.inputContainer}>
             <TextInput
               style={CommonStyles.input}
               placeholder="Enter kcal"
-              placeholderTextColor="#6C757D"
+              placeholderTextColor={Colors.grey}
               keyboardType="numeric"
               value={customCalories}
               onChangeText={setCustomCalories}

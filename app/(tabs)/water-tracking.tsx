@@ -15,6 +15,8 @@ import { ProgressBar } from 'react-native-paper';
 import { db, auth } from '../../FirebaseConfig'; // Import Firestore and Auth
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { useRouter } from 'expo-router';
+import Colors from '../../constants/Colors';
+import CommonStyles from '../../constants/CommonStyles';
 
 export default function WaterTracking() {
   // State variables
@@ -87,35 +89,35 @@ export default function WaterTracking() {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-          <Text style={styles.header}>Water Tracking</Text>
-          <Text style={styles.subheader}>Goal: {waterGoal} oz</Text>
-          <Text style={styles.intake}>You've consumed: {watersConsumed} oz</Text>
-          <ProgressBar progress={progress} color="#1E90FF" style={styles.progressBar} />
-          <View style={styles.buttonContainer}>
-            <Button title="+8 oz" onPress={() => addWaters(8)} color="#1E90FF" />
-            <Button title="+16 oz" onPress={() => addWaters(16)} color="#1E90FF" />
+          <Text style={CommonStyles.header}>Water Tracking</Text>
+          <Text style={CommonStyles.subheader}>Goal: {waterGoal} oz</Text>
+          <Text style={CommonStyles.intake}>You've consumed: {watersConsumed} oz</Text>
+          <ProgressBar progress={progress} color={Colors.lightblue} style={styles.progressBar} />
+          <View style={CommonStyles.buttonContainer}>
+            <Button title="+8 oz" onPress={() => addWaters(8)} color={Colors.lightblue} />
+            <Button title="+16 oz" onPress={() => addWaters(16)} color={Colors.lightblue} />
           </View>
-          <View style={styles.inputContainer}>
+          <View style={CommonStyles.inputContainer}>
             <TextInput
-              style={styles.input}
+              style={CommonStyles.input}
               placeholder="Enter custom amount (oz)"
-              placeholderTextColor="#6C757D"
+              placeholderTextColor={Colors.grey}
               keyboardType="numeric"
               value={customWaters}
               onChangeText={setCustomWaters}
             />
             <TouchableOpacity style={styles.addButton} onPress={handleManualAdd}>
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={CommonStyles.addButtonText}>Add</Text>
             </TouchableOpacity>
           </View>
 
           {/* Separate Container for Go Back Button */}
-          <View style={styles.separateButtonContainer}>
+          <View style={CommonStyles.goBackButtonContainer}>
             <TouchableOpacity
-              style={styles.goBackButton}
+              style={CommonStyles.goBackButton}
               onPress={() => router.push('/')} // Change this to the correct Dashboard route
             >
-              <Text style={styles.goBackButtonText}>Go Back to Dashboard</Text>
+              <Text style={CommonStyles.buttonText}>Go Back to Dashboard</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -129,83 +131,18 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: 'center',
-    backgroundColor: '#E6F7FF', // Light blue background color
-  },
-  header: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  subheader: {
-    fontSize: 18,
-    textAlign: 'center',
-    marginBottom: 5,
-  },
-  intake: {
-    fontSize: 16,
-    textAlign: 'center',
-    marginBottom: 20,
+    backgroundColor: Colors.verylightblue,
   },
   progressBar: {
     height: 20,
     borderRadius: 10,
-    backgroundColor: '#D3E8FF',
+    backgroundColor: Colors.aqua,
     marginVertical: 20,
   },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 20,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  input: {
-    flex: 1,
-    height: 40,
-    borderColor: '#B0C4DE', // Lighter shade of blue
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginRight: 10,
-    backgroundColor: '#fff',
-  },
   addButton: {
-    backgroundColor: '#1E90FF', // Main blue color for the button
+    backgroundColor: Colors.lightblue,
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 5,
   },
-  addButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  goBackButton: {
-    position: 'absolute',
-    bottom: 50, // Updated padding from the bottom of the screen
-    left: 20,
-    right: 20,
-    backgroundColor: '#5C6BC0',
-    padding: 15,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 5, // For shadow effect
-  },
-  goBackButtonText: {
-    color: '#FFFFFF', // Keeps the text white for contrast
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  separateButtonContainer: {
-    backgroundColor: '#FFFFFF',
-    position: 'absolute',
-    bottom: 0, // Align to the bottom of the screen
-    left: 0,
-    right: 0,
-    padding: 60, // Padding inside the white container
-  },      
 });

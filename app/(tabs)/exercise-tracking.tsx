@@ -178,7 +178,7 @@ export default function ExerciseTracking() {
           <Text style={CommonStyles.intake}>
             You've worked out {workoutDays.length} day(s) this week
           </Text>
-          <ProgressBar progress={progress} color="#32CD32" style={styles.progressBar} />
+          <ProgressBar progress={progress} color={Colors.green} style={styles.progressBar} />
 
           {/* Week Calendar for Quick Marking */}
           <View style={styles.calendarContainer}>
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
     color: Colors.darkgrey,
   },
   logExerciseButton: {
-    backgroundColor: '#32CD32',
+    backgroundColor: Colors.green,
     padding: 15,
     borderRadius: 10,
     marginTop: 20,
