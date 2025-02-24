@@ -138,11 +138,11 @@ export default function TabLayout() {
               size={50}
               width={5}
               fill={exerciseFill}
-              tintColor={focused ? Colors.lightgreen : Colors.darkgrey}
+              tintColor={focused ? Colors.green : Colors.darkgrey}
               backgroundColor={Colors.lightgrey}
             >
               {() => (
-                <FontAwesome6 name="dumbbell" size={25} color={focused ? Colors.lightgreen : Colors.darkgrey} />
+                <FontAwesome6 name="dumbbell" size={25} color={focused ? Colors.green : Colors.darkgrey} />
               )}
             </CircularProgress>
           ),

@@ -14,6 +14,8 @@ import { ProgressBar } from 'react-native-paper';
 import { db, auth } from '../../FirebaseConfig';
 import { doc, setDoc, getDoc, collection, query, where, getDocs, deleteDoc, Timestamp, writeBatch } from 'firebase/firestore';
 import { useRouter } from 'expo-router';
+import Colors from '../../constants/Colors';
+import CommonStyles from '../../constants/CommonStyles';
 
 export default function ExerciseTracking() {
   const router = useRouter();
@@ -169,11 +171,11 @@ export default function ExerciseTracking() {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-          <Text style={styles.header}>Exercise Tracking</Text>
-          <Text style={styles.subheader}>
+          <Text style={CommonStyles.header}>Exercise Tracking</Text>
+          <Text style={CommonStyles.subheader}>
             Weekly Goal: {weeklyWorkoutDaysGoal} days
           </Text>
-          <Text style={styles.intake}>
+          <Text style={CommonStyles.intake}>
             You've worked out {workoutDays.length} day(s) this week
           </Text>
           <ProgressBar progress={progress} color="#32CD32" style={styles.progressBar} />
@@ -216,16 +218,16 @@ export default function ExerciseTracking() {
             style={styles.logExerciseButton}
             onPress={navigateToLogExercise}
           >
-            <Text style={styles.logExerciseButtonText}>Log Exercise</Text>
+            <Text style={CommonStyles.buttonText}>Log Exercise</Text>
           </TouchableOpacity>
 
           {/* Go Back Button */}
-          <View style={styles.separateButtonContainer}>
+          <View style={CommonStyles.goBackButtonContainer}>
             <TouchableOpacity
-              style={styles.goBackButton}
+              style={CommonStyles.goBackButton}
               onPress={() => router.push('/')}
             >
-              <Text style={styles.goBackButtonText}>Go Back to Dashboard</Text>
+              <Text style={CommonStyles.buttonText}>Go Back to Dashboard</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -239,28 +241,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: 'center',
-    backgroundColor: '#D3F9D8',
-  },
-  header: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  subheader: {
-    fontSize: 18,
-    textAlign: 'center',
-    marginBottom: 5,
-  },
-  intake: {
-    fontSize: 16,
-    textAlign: 'center',
-    marginBottom: 20,
+    backgroundColor: Colors.lightgreen,
   },
   progressBar: {
     height: 20,
     borderRadius: 10,
-    backgroundColor: '#B8E2B0',
+    backgroundColor: Colors.medgreen,
     marginVertical: 20,
   },
   calendarContainer: {
@@ -273,28 +259,27 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#ccc',
-    backgroundColor: '#fff',
+    borderColor: Colors.lightgrey,
+    backgroundColor: Colors.white,
   },
   dayButtonActive: {
-    backgroundColor: '#32CD32',
+    backgroundColor: Colors.green,
   },
   dayButtonToday: {
-    borderColor: 'yellow',
-    borderWidth: 2,
+    borderColor: Colors.yellow,
+    borderWidth: 3,
   },
   dayButtonFuture: {
-    backgroundColor: '#ccc',
+    backgroundColor: Colors.grey,
   },
   dayButtonText: {
     fontSize: 16,
-    color: '#000',
   },
   dayButtonTextActive: {
-    color: '#fff',
+    color: Colors.white,
   },
   dayButtonTextFuture: {
-    color: '#888',
+    color: Colors.darkgrey,
   },
   logExerciseButton: {
     backgroundColor: '#32CD32',
@@ -302,35 +287,5 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 20,
     alignItems: 'center',
-  },
-  logExerciseButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  goBackButton: {
-    position: 'absolute',
-    bottom: 50, // Padding from the bottom of the screen
-    left: 20,
-    right: 20,
-    backgroundColor: '#5C6BC0',
-    padding: 15,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 5, // For shadow effect
-  },
-  goBackButtonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  separateButtonContainer: {
-    backgroundColor: '#FFFFFF',
-    position: 'absolute',
-    bottom: 0, // Align to the bottom of the screen
-    left: 0,
-    right: 0,
-    padding: 60, // Padding inside the white container
   },
 });
