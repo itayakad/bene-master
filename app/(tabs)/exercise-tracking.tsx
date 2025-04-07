@@ -21,7 +21,7 @@ export default function ExerciseTracking() {
   const router = useRouter();
 
   const navigateToLogExercise = () => {
-    router.push('/log-exercise'); // Navigate to the log-exercise page
+    router.push('/select-exercise'); // Navigate to the log-exercise page
   };
 
   const [weeklyWorkoutDaysGoal, setWeeklyWorkoutDaysGoal] = useState(3); // Default: 3 days/week

@@ -19,14 +19,13 @@ import { db, auth, storage } from '../FirebaseConfig'; // Ensure storage is init
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'; // Import Firebase Storage methods
 import * as ImagePicker from 'expo-image-picker';
-import { useRouter } from 'expo-router';
+import { useRouter, useLocalSearchParams } from 'expo-router';
 
 export default function LogExercise() {
   const router = useRouter();
 
   // State variables
-  const [exerciseType, setExerciseType] = useState(null);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { exerciseType } = useLocalSearchParams<{ exerciseType: string }>();
   const [duration, setDuration] = useState('');
   const [notes, setNotes] = useState('');
   const [image, setImage] = useState(null); // State for selected image
@@ -172,19 +171,8 @@ export default function LogExercise() {
           >
             <Text style={styles.header}>Log Exercise</Text>
 
-            <Text style={styles.label}>Select Exercise Type:</Text>
-            <View style={[styles.dropdownWrapper, { zIndex: 1000 }]}>
-              <DropDownPicker
-                open={dropdownOpen}
-                value={exerciseType}
-                items={exerciseOptions}
-                setOpen={setDropdownOpen}
-                setValue={setExerciseType}
-                placeholder="Choose exercise type"
-                style={styles.dropdown}
-                dropDownContainerStyle={styles.dropdownContainer}
-              />
-            </View>
+            <Text style={styles.label}>Exercise Type:</Text>
+            <Text style={styles.selectedExercise}>{exerciseType}</Text>
 
             <Text style={styles.label}>Duration (minutes):</Text>
             <TextInput
@@ -234,9 +222,13 @@ export default function LogExercise() {
             {image && <Image source={{ uri: image }} style={styles.imagePreview} />}
 
             <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.cancelButton} onPress={() => router.back()}>
-                <Text style={styles.cancelButtonText}>Cancel</Text>
-              </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.cancelButton}
+              onPress={() => router.replace('/(tabs)/exercise-tracking')}
+            >
+              <Text style={styles.cancelButtonText}>Cancel</Text>
+            </TouchableOpacity>
+
               <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
                 <Text style={styles.buttonText}>Submit</Text>
               </TouchableOpacity>
@@ -367,5 +359,12 @@ const styles = StyleSheet.create({
   halfInput: {
     flex: 1,
     marginHorizontal: 5, // Add spacing between the inputs
+  },
+  selectedExercise: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#000',
+    paddingHorizontal: 20,
+    marginBottom: 15,
   },  
 });
