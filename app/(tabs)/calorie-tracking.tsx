@@ -153,7 +153,7 @@ export default function CaloriesTracking() {
 
           <TouchableOpacity
             style={styles.lookupButton}
-            onPress={() => router.push('/log-meal')}
+            onPress={() => router.push('/select-meal')}
           >
             <Text style={CommonStyles.buttonText}>Log Food</Text>
           </TouchableOpacity>

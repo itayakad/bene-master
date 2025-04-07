@@ -234,13 +234,19 @@ export default function LogMeal() {
             {/* Conditional Button Rendering */}
             {!nutrition ? (
               <View style={styles.singleButtonContainer}>
-                <TouchableOpacity style={styles.largeCancelButton} onPress={() => router.back()}>
+                <TouchableOpacity
+                  style={styles.largeCancelButton}
+                  onPress={() => router.replace('/(tabs)/calorie-tracking')}
+                >
                   <Text style={styles.largeCancelButtonText}>Cancel</Text>
                 </TouchableOpacity>
               </View>
             ) : (
               <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.cancelButton} onPress={() => router.back()}>
+                <TouchableOpacity
+                  style={styles.cancelButton}
+                  onPress={() => router.replace('/(tabs)/calorie-tracking')}
+                >
                   <Text style={styles.cancelButtonText}>Cancel</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.submitButton} onPress={logMeal}>
