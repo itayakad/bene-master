@@ -1,0 +1,74 @@
+.exercise-data-container {
+    padding: 20px;
+    background-color: #d3f9d8;
+    min-height: 100vh;
+    font-family: sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+  }
+  
+  .date-header {
+    background-color: #32cd32;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .log-entry {
+    background-color: #fff;
+    padding: 15px;
+    margin: 5px 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .log-entry p {
+    margin: 5px 0;
+    color: #000;
+  }
+  
+  .view-photo-btn {
+    background-color: #32cd32;
+    color: white;
+    padding: 8px 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .delete-btn {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .go-back-btn {
+    background-color: #ccc;
+    color: black;
+    font-weight: bold;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    margin: 30px auto 0;
+    display: block;
+  }
+  

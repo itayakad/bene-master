@@ -1,0 +1,43 @@
+.select-exercise-container {
+    background-color: #d3f9d8;
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .select-exercise-header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .exercise-button {
+    background-color: #32cd32;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease;
+  }
+  
+  .exercise-button:hover {
+    background-color: #28a428;
+  }
+  

@@ -1,0 +1,99 @@
+.calorie-container {
+    background-color: #fff6e5 !important;
+    min-height: 100vh;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: system-ui, sans-serif;
+  }
+  
+  .calorie-header {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #000 !important;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  
+  .calorie-subheader,
+  .calorie-intake {
+    font-size: 1.1rem;
+    color: #000 !important;
+    margin-bottom: 0.25rem;
+    text-align: center;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    max-width: 400px;
+    height: 20px;
+    background-color: #ffe0a3 !important;
+    border-radius: 20px;
+    margin: 1.5rem auto;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background-color: #ffb300 !important;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  .calorie-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .calorie-buttons button {
+    background-color: transparent;
+    border: none;
+    color: #ffa000 !important;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .input-group {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .input-group input {
+    padding: 0.75rem;
+    border: 1px solid #ccc !important;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 200px;
+  }
+  
+  .input-group button {
+    background-color: #ffa000 !important;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .log-food-button {
+    background-color: #ffa000 !important;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+  

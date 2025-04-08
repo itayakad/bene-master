@@ -1,0 +1,78 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  .dashboard-container {
+    background-color: #ffffff;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .dashboard-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1A237E;
+    margin-bottom: 2.5rem;
+  }
+  
+  .progress-ring-row {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  
+  .ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+  }
+  
+  .ring-emoji {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 32px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  
+  .button {
+    width: 90%;
+    max-width: 500px;
+    padding: 1.2rem;
+    margin: 0.75rem auto;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .purple {
+    background-color: #5C6BC0;
+  }
+  
+  .green {
+    background-color: #66BB6A;
+  }
+  
+  .orange {
+    background-color: #FFA726;
+  }
+  
+  .bottom-button {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  

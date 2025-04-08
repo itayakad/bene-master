@@ -1,0 +1,52 @@
+.tab-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #ffffff;
+    padding: 20px 20px 30px;
+    border-top: 2px solid #f0f0f0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  .tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: #555;
+    width: 25%;
+    margin-bottom: 10px;
+  }
+  
+  .tab span {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  
+  .circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: conic-gradient(#ccc 0%, #e0e0e0 100%);
+  }
+  
+  .dashboard-tab {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .dashboard-button {
+    padding: 0.75rem 2rem;
+    background-color: #5c6bc0;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  

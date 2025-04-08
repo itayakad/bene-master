@@ -1,0 +1,106 @@
+.exercise-container {
+    background-color: #d3f9d8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'System-ui', sans-serif;
+  }
+  
+  .exercise-content {
+    padding: 2rem;
+    padding-bottom: 4rem; /* space between content and nav */
+  }
+  
+  .exercise-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: black;
+    text-align: center;
+  }
+  
+  .exercise-subheader,
+  .exercise-intake {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  .exercise-progress-bar {
+    width: 90%;
+    height: 20px;
+    background-color: #c3e8c3;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1.5rem auto;
+  }
+  
+  .exercise-progress-fill {
+    height: 100%;
+    background-color: #32cd32;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .calendar-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .calendar-day {
+    padding: 0.6rem 1rem;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .calendar-day.active {
+    background-color: #32cd32;
+    color: white;
+  }
+  
+  .calendar-day.today {
+    border: 3px solid #ffd700;
+  }
+  
+  .calendar-day.future {
+    background-color: #ccc;
+    color: #555;
+    cursor: not-allowed;
+  }
+  
+  .log-exercise-button {
+    width: 90%;
+    padding: 1rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    background-color: #32cd32;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .go-back-button {
+    width: 90%;
+    margin: 1rem auto 2rem auto;
+    background-color: #5c6bc0;
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  

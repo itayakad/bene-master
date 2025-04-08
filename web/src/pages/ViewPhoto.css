@@ -1,0 +1,48 @@
+.view-photo-container {
+    min-height: 100vh;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .photo-preview {
+    width: 90%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 10px;
+    background-color: #e0e0e0;
+  }
+  
+  .error-text {
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .photo-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .go-back-button,
+  .delete-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .go-back-button {
+    background-color: #32cd32;
+  }
+  
+  .delete-button {
+    background-color: #ff0000;
+  }
+  

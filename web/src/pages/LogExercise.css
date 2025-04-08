@@ -1,0 +1,85 @@
+.log-exercise-container {
+    background-color: #d3f9d8;
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: system-ui, sans-serif;
+    color: #000;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-top: 1rem;
+  }
+  
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.25rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+  
+  textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  .selected-exercise {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .calories-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .row-inputs {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .row-inputs input {
+    flex: 1;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+  
+  .cancel-btn,
+  .submit-btn {
+    flex: 1;
+    padding: 0.75rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 0.5rem;
+  }
+  
+  .cancel-btn {
+    background-color: #ccc;
+    color: #000;
+  }
+  
+  .submit-btn {
+    background-color: #32cd32;
+  }
+  
