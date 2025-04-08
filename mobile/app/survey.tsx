@@ -128,7 +128,7 @@ export default function Survey() {
           proteinGoal: `${proteinGoal.toFixed(0)} g`,
           exerciseGoal: `${weeklyWorkoutDaysGoal} days/week`,
         },
-      });
+      }, { merge: true });
       Alert.alert('Survey Complete', 'Your preferences have been saved!');
       router.replace('/(tabs)');
     } catch (error) {

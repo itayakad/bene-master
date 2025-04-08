@@ -62,6 +62,8 @@ function RootLayoutNav() {
         <Stack.Screen name="log-meal" options={{ headerShown: false }} />
         <Stack.Screen name="meal-data" options={{ headerShown: false }} />
         <Stack.Screen name="settings" options={{ headerShown: false }} />
+        <Stack.Screen name="select-exercise" options={{ headerShown: false }} />
+        <Stack.Screen name="select-meal" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );
