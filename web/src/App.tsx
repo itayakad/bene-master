@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase/firebaseConfig';
-import { onAuthStateChanged } from 'firebase/auth';
+
 import Index from './pages/Index';
 import Dashboard from './pages/Dashboard';
 import SelectMealEntry from './pages/SelectMealEntry';
@@ -18,36 +19,45 @@ import SelectExerciseType from './pages/SelectExerciseType';
 import LogExercise from './pages/LogExercise';
 import TabLayout from './layouts/TabLayout';
 import ExerciseData from './pages/ExerciseData';
-import { useLocation } from 'react-router-dom';
 
 export default function App() {
   const navigate = useNavigate();
-  const location = useLocation(); // ✅ Needed to detect the current route
+  const location = useLocation();
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
+  // 🔥 Force sign-out every time the app loads
+  useEffect(() => {
+    signOut(auth).then(() => console.log('🔒 User signed out on load'));
+  }, []);
+
+  // ✅ Just listen to auth changes to set user state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
+      console.log('🔄 Auth state changed:', userAuth);
       setUser(userAuth);
       setLoading(false);
-      if (!userAuth) navigate('/');
     });
     return unsubscribe;
-  }, [navigate]);
+  }, []);
 
   if (loading) return <div>Loading...</div>;
 
-  // ✅ Hide tabs on these routes
-  const hideTabsOnRoutes = ['/', '/survey', '/log-exercise', '/log-meal', '/view-photo', '/exercise-data', '/meal-data', '/settings', '/select-meal'];
+  const hideTabsOnRoutes = [
+    '/', '/survey', '/log-exercise', '/log-meal',
+    '/view-photo', '/exercise-data', '/meal-data',
+    '/settings', '/select-meal'
+  ];
   const hideTabs = hideTabsOnRoutes.includes(location.pathname);
 
   return (
     <>
       <Routes>
-        <Route path="/" element={!user ? <Index /> : <Navigate to="/dashboard" />} />
+        <Route path="/" element={<Index />} />
         <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/" />} />
         <Route path="/select-meal" element={user ? <SelectMealEntry /> : <Navigate to="/" />} />
         <Route path="/log-meal" element={user ? <LogMeal /> : <Navigate to="/" />} />
+        <Route path="/log-meal-manual" element={user ? <LogMealManual /> : <Navigate to="/" />} />
         <Route path="/water-tracking" element={user ? <WaterTracking /> : <Navigate to="/" />} />
         <Route path="/calorie-tracking" element={user ? <CalorieTracking /> : <Navigate to="/" />} />
         <Route path="/exercise-tracking" element={user ? <ExerciseTracking /> : <Navigate to="/" />} />
@@ -58,8 +68,8 @@ export default function App() {
         <Route path="/select-exercise" element={user ? <SelectExerciseType /> : <Navigate to="/" />} />
         <Route path="/log-exercise" element={user ? <LogExercise /> : <Navigate to="/" />} />
         <Route path="/exercise-data" element={user ? <ExerciseData /> : <Navigate to="/" />} />
-        <Route path="/log-meal-manual" element={user ? <LogMealManual /> : <Navigate to="/" />} />
       </Routes>
+
       {user && !hideTabs && <TabLayout />}
     </>
   );

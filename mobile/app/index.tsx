@@ -1,10 +1,10 @@
-import { Text, StyleSheet, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
+import { Text, StyleSheet, TextInput, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import React, { useState } from 'react';
 import { auth } from '../FirebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { router } from 'expo-router';
 
-const index = () => {
+export default function index() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,7 +21,7 @@ const index = () => {
   const signUp = async () => {
     try {
       const user = await createUserWithEmailAndPassword(auth, email, password);
-      if (user) router.replace('/survey'); // Redirect to the survey page
+      if (user) router.replace('/survey');
     } catch (error: any) {
       console.log(error);
       alert('Account creation failed: Email already in use');
@@ -30,7 +30,10 @@ const index = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Welcome to JUNO!</Text>
+      <Image source={require('../assets/images/bear_logo.png')} style={styles.logo} />
+      <Text style={styles.title}>The Bear Necessities</Text>
+      <Text style={styles.subtitle}>Water, Calorie, & Fitness Tracker</Text>
+
       <TextInput
         style={styles.textInput}
         placeholder="Email"
@@ -50,26 +53,38 @@ const index = () => {
         <Text style={styles.text}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={signUp}>
-        <Text style={styles.text}>Make Account</Text>
+        <Text style={styles.text}>Create Account</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
-};
-
-export default index;
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FAFAFA', // A softer white for a modern, minimalist background
+    backgroundColor: '#FAFAFA',
+  },
+  logo: {
+    width: 145,
+    height: 145,
+    marginBottom: 10,
+    resizeMode: 'contain',
   },
   title: {
-    fontSize: 28, // A bit larger for a more striking appearance
-    fontWeight: '800', // Extra bold for emphasis
-    marginBottom: 40, // Increased space for a more airy, open feel
-    color: '#1A237E', // A deep indigo for a sophisticated, modern look
+    fontSize: 28,
+    fontWeight: '800',
+    marginBottom: 5,
+    color: '#1A237E',
+    textAlign: 'center',
+  },
+  subtitle: {
+    fontSize: 14,
+    color: '#8e82c9',
+    fontWeight: '500',
+    marginBottom: 30,
+    textAlign: 'center',
   },
   textInput: {
     height: 50,

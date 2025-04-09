@@ -93,7 +93,7 @@ export default function Survey() {
         },
       }, { merge: true });
       alert('Survey complete! Your preferences have been saved.');
-      navigate('/');
+      navigate('/dashboard');
     } catch (error) {
       alert('Error saving data.');
       console.error(error);

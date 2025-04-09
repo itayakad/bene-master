@@ -56,4 +56,33 @@ body, .container {
   .button:hover {
     background-color: #3F51B5;
   }
+
+  .logo {
+    width: 200px;
+    margin: 40px auto -10px; /* ⬅️ Top: 40px, Bottom: 16px */
+    display: block;
+  }  
+
+  .subtitle {
+    margin-top: -2.75rem;
+    font-size: 1rem;
+    color: #8e82c9; /* slightly greyer purple */
+    text-align: center;
+    font-weight: 500;
+  }  
+
+  .branding {
+    margin-bottom: 10px; /* ⬅️ separates branding from inputs */
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* ✅ centers everything horizontally */
+    width: 100%;
+    max-width: 400px;        /* optional: matches .input/button max width */
+  }
+  
+  
+  
   
