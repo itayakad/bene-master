@@ -28,11 +28,14 @@ const SelectMealEntry: React.FC = () => {
         style={styles.button}
         onPress={() => handleNavigation('api')}
       >
-        <Text style={styles.buttonText}>🍴 Use API (Estimate Nutrition)</Text>
+        <View style={styles.buttonTextContainer}>
+          <Text style={styles.buttonText}>🍴 Use API</Text>
+          <Text style={styles.subButtonText}>Powered by Spoonacular</Text>
+        </View>
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={[styles.button, styles.manualButton]}
+        style={styles.button}
         onPress={() => handleNavigation('manual')}
       >
         <Text style={styles.buttonText}>✍️ Enter Manually</Text>
@@ -69,6 +72,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center',
     marginBottom: 20,
+    marginHorizontal: 20,
   },
   manualButton: {
     backgroundColor: '#FF8C00',
@@ -78,4 +82,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+  buttonTextContainer: {
+    alignItems: 'center',
+  },
+  subButtonText: {
+    fontSize: 12,
+    color: '#f0f0f0',
+    opacity: 0.8, // gives it that slightly grey feel
+    marginTop: 4,
+  },  
 });

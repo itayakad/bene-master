@@ -1,44 +1,68 @@
 .meal-container {
-    background-color: #fff3e0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-    align-items: center;
-    font-family: system-ui, sans-serif;
-  }
-  
-  .meal-header {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #000;
-  }
-  
-  .meal-subtext {
-    font-size: 1rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #333;
-  }
-  
-  .meal-button {
-    background-color: #ffa500;
-    color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    width: 90%;
-    max-width: 400px;
-  }
-  
-  .manual-button {
-    background-color: #ffa500;
-  }
-  
+  background-color: #fff3e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  align-items: center;
+  font-family: system-ui, sans-serif;
+}
+
+.meal-header {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.meal-subtext {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.meal-button {
+  background-color: #ffa500;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center horizontally */
+  justify-content: center; /* center vertically */
+  text-align: center;
+}
+
+.manual-button {
+  background-color: #ffa500;
+}
+
+/* 👇 New classes for nested layout */
+.button-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.button-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.sub-button-text {
+  font-size: 0.85rem;
+  font-weight: normal;
+  color: #fff;
+  opacity: 0.85;
+}

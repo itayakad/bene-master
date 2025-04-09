@@ -70,16 +70,16 @@ export default function LogMealManual() {
       return;
     }
 
-    if (!mealDescription || !calories || !carbs || !fat || !protein) {
-      Alert.alert('Error', 'Please fill in all fields.');
+    if (!mealDescription || !calories) {
+      Alert.alert('Error', 'Please enter at least a meal description and calories.');
       return;
-    }
+    }    
 
     try {
       const mealCalories = parseInt(calories);
-      const mealCarbs = parseInt(carbs);
-      const mealFat = parseInt(fat);
-      const mealProtein = parseInt(protein);
+      const mealCarbs = carbs ? parseInt(carbs) : 0;
+      const mealFat = fat ? parseInt(fat) : 0;
+      const mealProtein = protein ? parseInt(protein) : 0;
 
       if (
         isNaN(mealCalories) ||

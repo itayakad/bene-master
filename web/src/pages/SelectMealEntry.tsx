@@ -18,8 +18,12 @@ export default function SelectMealEntry() {
       <p className="meal-subtext">Choose how you’d like to enter your meal:</p>
 
       <button className="meal-button" onClick={() => handleNavigation('api')}>
-        🍴 Use API (Estimate Nutrition)
+        <div className="button-text-container">
+          <div className="button-text">🍴 Use API</div>
+          <div className="sub-button-text">Powered by Spoonacular</div>
+        </div>
       </button>
+
 
       <button className="meal-button manual-button" onClick={() => handleNavigation('manual')}>
         ✍️ Enter Manually

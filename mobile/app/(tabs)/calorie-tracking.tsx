@@ -105,8 +105,8 @@ export default function CaloriesTracking() {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <Text style={CommonStyles.header}>Calories Tracking</Text>
-          <Text style={CommonStyles.subheader}>Goal: {calorieGoal} kcal</Text>
-          <Text style={CommonStyles.intake}>You've consumed: {caloriesConsumed} kcal</Text>
+          <Text style={CommonStyles.subheader}>Goal: {calorieGoal} cal</Text>
+          <Text style={CommonStyles.intake}>You've consumed: {caloriesConsumed} cal</Text>
 
           <ProgressBar progress={progress} color={Colors.orange} style={styles.progressBar} />
 
@@ -132,15 +132,15 @@ export default function CaloriesTracking() {
           )}
 
           <View style={CommonStyles.buttonContainer}>
-            <Button title="+100 kcal" onPress={() => addCalories(100)} color={Colors.orange} />
-            <Button title="+200 kcal" onPress={() => addCalories(200)} color={Colors.orange} />
-            <Button title="+500 kcal" onPress={() => addCalories(500)} color={Colors.orange} />
+            <Button title="+100 cal" onPress={() => addCalories(100)} color={Colors.orange} />
+            <Button title="+200 cal" onPress={() => addCalories(200)} color={Colors.orange} />
+            <Button title="+500 cal" onPress={() => addCalories(500)} color={Colors.orange} />
           </View>
 
           <View style={CommonStyles.inputContainer}>
             <TextInput
               style={CommonStyles.input}
-              placeholder="Enter kcal"
+              placeholder="Enter cal"
               placeholderTextColor={Colors.grey}
               keyboardType="numeric"
               value={customCalories}

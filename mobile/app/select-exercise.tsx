@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 15,
     alignItems: 'center',
+    marginHorizontal: 20,
   },
   buttonText: {
     fontSize: 18,
