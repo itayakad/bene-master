@@ -15,8 +15,8 @@ export default function Dashboard() {
   const db = getFirestore();
 
   const [waterFill, setWaterFill] = useState(0);
-  const [/*calorieFill*/, setCalorieFill] = useState(0);
-  const [/*exerciseFill*/, setExerciseFill] = useState(0);
+  const [calorieFill, setCalorieFill] = useState(0);
+  const [exerciseFill, setExerciseFill] = useState(0);
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -60,24 +60,25 @@ export default function Dashboard() {
         <div className="ring-emoji">💧</div>
         </div>
         <div className="ring" onClick={() => navigate('/calorie-tracking')}>
-            <CircularProgressbar
-                value={waterFill}
-                styles={buildStyles({
-                    pathColor: '#FFA726',
-                    trailColor: '#E0E0E0',
-                })}
-            />
-         <div className="ring-emoji">🍎</div>
-        </div>
-        <div className="ring" onClick={() => navigate('/exercise-tracking')}>
-        <CircularProgressbar
-            value={waterFill}
+          <CircularProgressbar
+            value={calorieFill} // <- FIXED!
             styles={buildStyles({
-            pathColor: '#66BB6A',
-            trailColor: '#E0E0E0',
+              pathColor: '#FFA726',
+              trailColor: '#E0E0E0',
             })}
-        />
-        <div className="ring-emoji">🏋️‍♀️</div>
+          />
+          <div className="ring-emoji">🍎</div>
+        </div>
+
+        <div className="ring" onClick={() => navigate('/exercise-tracking')}>
+          <CircularProgressbar
+            value={exerciseFill} // <- FIXED!
+            styles={buildStyles({
+              pathColor: '#66BB6A',
+              trailColor: '#E0E0E0',
+            })}
+          />
+          <div className="ring-emoji">🏋️‍♀️</div>
         </div>
       </div>
 

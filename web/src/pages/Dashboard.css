@@ -70,9 +70,18 @@ body {
   }
   
   .bottom-button {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 4rem; /* Optional spacing */
+  }  
+  
+  .purple:hover {
+    background-color: #3F51B5;
+  }
+  
+  .green:hover {
+    background-color: #4CAF50;
+  }
+  
+  .orange:hover {
+    background-color: #FB8C00;
   }
   

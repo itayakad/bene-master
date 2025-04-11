@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './firebase/firebaseConfig';
 
@@ -21,7 +21,7 @@ import TabLayout from './layouts/TabLayout';
 import ExerciseData from './pages/ExerciseData';
 
 export default function App() {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const location = useLocation();
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
