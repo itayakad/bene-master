@@ -39,7 +39,7 @@ Both versions connect to a shared Firebase backend for real-time sync and data c
 ## 📁 Folder Structure
 
 ```
-juno-master/
+bene-master/
 ├── mobile/               # Expo mobile version
 ├── web/                  # Vite web version
 ├── .expo/                # Expo dev settings
