@@ -74,9 +74,9 @@ export default function WaterTracking() {
           <div className="water-progress-fill" style={{ width: `${progress * 100}%` }} />
         </div>
 
-        <div className="button-group">
-          <button onClick={() => addWaters(8)}>+8 oz</button>
-          <button onClick={() => addWaters(16)}>+16 oz</button>
+        <div className="water-button-row">
+          <button className="water-add-btn" onClick={() => addWaters(8)}>+8 oz</button>
+          <button className="water-add-btn" onClick={() => addWaters(16)}>+16 oz</button>
         </div>
 
         <div className="water-input-group">

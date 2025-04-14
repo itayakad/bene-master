@@ -1,114 +1,139 @@
 .page-container {
-    background-color: #e6f7ff !important;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem;
-    font-family: system-ui, sans-serif;
-  }
-  
-  .content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .header {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #000 !important;
-    margin-bottom: 0.5rem;
-  }
-  
-  .subheader,
-  .intake {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: #000 !important;
-  }
-  
-  .water-progress-bar {
-    width: 100%;
-    max-width: 400px;
-    height: 20px;
-    background-color: #d3eafc !important;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 1.5rem auto;
-  }
-  
-  .water-progress-fill {
-    height: 100%;
-    background-color: #82b1ff !important;
-    width: 0%;
-    transition: width 0.4s ease-in-out;
-  }
-  
-  .button-group {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-  }
-  
-  .button-group button {
-    padding: 0.5rem 1.25rem;
-    font-size: 1.1rem;
-    background-color: transparent !important;
-    color: #448aff !important;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .input-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-  }
-  
-  .input-group input {
-    padding: 0.75rem;
-    width: 220px;
-    border: 1px solid #ccc !important;
-    border-radius: 8px;
-    font-size: 1rem;
-  }
-  
-  .water-input-group button {
-    padding: 0.75rem 1.25rem;
-    background-color: #448aff !important;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .go-back {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 1.5rem;
-  }
-  
-  .go-back button {
-    background-color: #5c6bc0 !important;
-    color: white;
-    font-weight: bold;
-    font-size: 1rem;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 500px;
-  }
-  
+  background-color: #e6f7ff !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  font-family: system-ui, sans-serif;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000 !important;
+  margin-bottom: 0.5rem;
+}
+
+.subheader,
+.intake {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #000 !important;
+}
+
+.water-progress-bar {
+  width: 100%;
+  max-width: 400px;
+  height: 20px;
+  background-color: #d3eafc !important;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1.5rem auto;
+}
+
+.water-progress-fill {
+  height: 100%;
+  background-color: #82b1ff !important;
+  width: 0%;
+  transition: width 0.4s ease-in-out;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: nowrap; /* Force side-by-side */
+}
+
+.button-group button {
+  padding: 0.5rem 1.25rem;
+  font-size: 1.1rem;
+  background-color: transparent !important;
+  color: #448aff !important;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+  width: auto;           /* ✅ Ensure button doesn’t stretch */
+  display: inline-block; /* ✅ Prevent block-style stacking */
+}
+
+.water-input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.water-input-group input {
+  padding: 0.65rem 1rem;
+  width: 220px;
+  height: 45px;
+  border: 1px solid #ccc !important;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.water-input-group button {
+  padding: 0.65rem 1.25rem;
+  height: 45px;
+  background-color: #448aff !important;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.go-back {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1.5rem;
+}
+
+.go-back button {
+  background-color: #5c6bc0 !important;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.water-button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.water-add-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1.1rem;
+  color: #448aff;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}

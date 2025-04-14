@@ -1,12 +1,12 @@
-# JUNO 🌿
+# The Bear Necessitites (BeNe) 🐻
 
-**JUNO** is a cross-platform fitness tracking app designed for users who want to live healthier without obsessing over details. Built with modern tools, JUNO lets you log meals, track workouts, and monitor hydration on both web and mobile—all synced through Firebase.
+**BeNe** is a cross-platform fitness tracking app designed for users who want to live healthier without obsessing over details. Built with modern tools, BeNe lets you log meals, track workouts, and monitor hydration on both web and mobile—all synced through Firebase.
 
 ---
 
 ## 📱 Mobile & Web Versions
 
-JUNO is built with **two platforms**, sharing the same backend:
+BeNe is built with **two platforms**, sharing the same backend:
 
 | Platform | Folder   | Stack Used                  |
 |----------|----------|-----------------------------|
@@ -84,7 +84,7 @@ firebase deploy
 
 ## 🙌 Credits
 
-Built by [Your Name] using modern tech to make healthy living more accessible.
+Built by Itay Akad using modern tech to make healthy living more accessible.
 
 ---
 
