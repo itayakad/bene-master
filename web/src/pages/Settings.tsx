@@ -86,7 +86,7 @@ export default function Settings() {
         <button className="delete-button" onClick={handleDeleteAccount}>Delete Account</button>
       </div>
 
-      <button className="go-back-button" onClick={() => navigate('/')}>
+      <button className="go-back-button" onClick={() => navigate('/dashboard')}>
         Go Back to Dashboard
       </button>
     </div>

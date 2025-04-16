@@ -92,7 +92,7 @@ export default function Survey() {
           exerciseGoal: `${weeklyWorkoutDaysGoal} days/week`,
         },
       }, { merge: true });
-      alert('Survey complete! Your preferences have been saved.');
+      //alert('Survey complete! Your preferences have been saved.');
       navigate('/dashboard');
     } catch (error) {
       alert('Error saving data.');

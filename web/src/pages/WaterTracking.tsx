@@ -82,7 +82,7 @@ export default function WaterTracking() {
         <div className="water-input-group">
           <input
             type="number"
-            placeholder="Enter custom amount (oz)"
+            placeholder="Enter oz"
             value={customWaters}
             onChange={(e) => setCustomWaters(e.target.value)}
           />
